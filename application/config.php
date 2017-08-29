@@ -17,9 +17,9 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => false,
+    'app_trace'              => true,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -237,5 +237,15 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+
+    //验证码
+    'captcha' =>    [
+        // 验证码字体大小
+        'fontSize'    =>    25,
+        // 验证码位数
+        'length'      =>    4,
+        // 关闭验证码杂点
+        'useNoise'    =>    false,
     ],
 ];
