@@ -280,7 +280,7 @@ class Console
     public function getLongVersion()
     {
         if ('UNKNOWN' !== $this->getName() && 'UNKNOWN' !== $this->getVersion()) {
-            return sprintf('<info>%s</info> version <comment>%s</comment>', $this->getName(), $this->getVersion());
+            return sprintf('<info>%s</info> version <common>%s</common>', $this->getName(), $this->getVersion());
         }
 
         return '<info>Console Tool</info>';

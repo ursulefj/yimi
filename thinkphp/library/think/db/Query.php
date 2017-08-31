@@ -1558,7 +1558,7 @@ class Query
      */
     public function comment($comment)
     {
-        $this->options['comment'] = $comment;
+        $this->options['common'] = $comment;
         return $this;
     }
 
@@ -2763,7 +2763,7 @@ class Query
             }
         }
 
-        foreach (['join', 'union', 'group', 'having', 'limit', 'order', 'force', 'comment'] as $name) {
+        foreach (['join', 'union', 'group', 'having', 'limit', 'order', 'force', 'common'] as $name) {
             if (!isset($options[$name])) {
                 $options[$name] = '';
             }

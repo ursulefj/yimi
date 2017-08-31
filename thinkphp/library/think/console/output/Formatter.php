@@ -37,7 +37,7 @@ class Formatter
     {
         $this->setStyle('error', new Style('white', 'red'));
         $this->setStyle('info', new Style('green'));
-        $this->setStyle('comment', new Style('yellow'));
+        $this->setStyle('common', new Style('yellow'));
         $this->setStyle('question', new Style('black', 'cyan'));
         $this->setStyle('highlight', new Style('red'));
         $this->setStyle('warning', new Style('black', 'yellow'));

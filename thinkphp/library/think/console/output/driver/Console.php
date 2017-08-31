@@ -113,7 +113,7 @@ class Console
             $this->write($messages, true, Output::OUTPUT_NORMAL, $stderr);
 
             if (Output::VERBOSITY_VERBOSE <= $this->output->getVerbosity()) {
-                $this->write('<comment>Exception trace:</comment>', true, Output::OUTPUT_NORMAL, $stderr);
+                $this->write('<common>Exception trace:</common>', true, Output::OUTPUT_NORMAL, $stderr);
 
                 // exception related properties
                 $trace = $e->getTrace();

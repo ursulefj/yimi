@@ -77,7 +77,7 @@ class Descriptor
             && (!is_array($argument->getDefault())
                 || count($argument->getDefault()))
         ) {
-            $default = sprintf('<comment> [default: %s]</comment>', $this->formatDefaultValue($argument->getDefault()));
+            $default = sprintf('<common> [default: %s]</common>', $this->formatDefaultValue($argument->getDefault()));
         } else {
             $default = '';
         }
@@ -101,7 +101,7 @@ class Descriptor
             && (!is_array($option->getDefault())
                 || count($option->getDefault()))
         ) {
-            $default = sprintf('<comment> [default: %s]</comment>', $this->formatDefaultValue($option->getDefault()));
+            $default = sprintf('<common> [default: %s]</common>', $this->formatDefaultValue($option->getDefault()));
         } else {
             $default = '';
         }
@@ -121,7 +121,7 @@ class Descriptor
         $spacingWidth = $totalWidth - strlen($synopsis) + 2;
 
         $this->writeText(sprintf("  <info>%s</info>%s%s%s%s", $synopsis, str_repeat(' ', $spacingWidth), // + 17 = 2 spaces + <info> + </info> + 2 spaces
-            preg_replace('/\s*\R\s*/', "\n" . str_repeat(' ', $totalWidth + 17), $option->getDescription()), $default, $option->isArray() ? '<comment> (multiple values allowed)</comment>' : ''), $options);
+            preg_replace('/\s*\R\s*/', "\n" . str_repeat(' ', $totalWidth + 17), $option->getDescription()), $default, $option->isArray() ? '<common> (multiple values allowed)</common>' : ''), $options);
     }
 
     /**
@@ -138,7 +138,7 @@ class Descriptor
         }
 
         if ($definition->getArguments()) {
-            $this->writeText('<comment>Arguments:</comment>', $options);
+            $this->writeText('<common>Arguments:</common>', $options);
             $this->writeText("\n");
             foreach ($definition->getArguments() as $argument) {
                 $this->describeInputArgument($argument, array_merge($options, ['total_width' => $totalWidth]));
@@ -153,7 +153,7 @@ class Descriptor
         if ($definition->getOptions()) {
             $laterOptions = [];
 
-            $this->writeText('<comment>Options:</comment>', $options);
+            $this->writeText('<common>Options:</common>', $options);
             foreach ($definition->getOptions() as $option) {
                 if (strlen($option->getShortcut()) > 1) {
                     $laterOptions[] = $option;
@@ -181,7 +181,7 @@ class Descriptor
         $command->getSynopsis(false);
         $command->mergeConsoleDefinition(false);
 
-        $this->writeText('<comment>Usage:</comment>', $options);
+        $this->writeText('<common>Usage:</common>', $options);
         foreach (array_merge([$command->getSynopsis(true)], $command->getAliases(), $command->getUsages()) as $usage) {
             $this->writeText("\n");
             $this->writeText('  ' . $usage, $options);
@@ -197,7 +197,7 @@ class Descriptor
 
         if ($help = $command->getProcessedHelp()) {
             $this->writeText("\n");
-            $this->writeText('<comment>Help:</comment>', $options);
+            $this->writeText('<common>Help:</common>', $options);
             $this->writeText("\n");
             $this->writeText(' ' . str_replace("\n", "\n ", $help), $options);
             $this->writeText("\n");
@@ -227,7 +227,7 @@ class Descriptor
                 $this->writeText("$help\n\n", $options);
             }
 
-            $this->writeText("<comment>Usage:</comment>\n", $options);
+            $this->writeText("<common>Usage:</common>\n", $options);
             $this->writeText("  command [options] [arguments]\n\n", $options);
 
             $this->describeInputDefinition(new InputDefinition($console->getDefinition()->getOptions()), $options);
@@ -238,16 +238,16 @@ class Descriptor
             $width = $this->getColumnWidth($description->getCommands());
 
             if ($describedNamespace) {
-                $this->writeText(sprintf('<comment>Available commands for the "%s" namespace:</comment>', $describedNamespace), $options);
+                $this->writeText(sprintf('<common>Available commands for the "%s" namespace:</common>', $describedNamespace), $options);
             } else {
-                $this->writeText('<comment>Available commands:</comment>', $options);
+                $this->writeText('<common>Available commands:</common>', $options);
             }
 
             // add commands by namespace
             foreach ($description->getNamespaces() as $namespace) {
                 if (!$describedNamespace && ConsoleDescription::GLOBAL_NAMESPACE !== $namespace['id']) {
                     $this->writeText("\n");
-                    $this->writeText(' <comment>' . $namespace['id'] . '</comment>', $options);
+                    $this->writeText(' <common>' . $namespace['id'] . '</common>', $options);
                 }
 
                 foreach ($namespace['commands'] as $name) {

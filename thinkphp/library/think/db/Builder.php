@@ -679,7 +679,7 @@ abstract class Builder
                 $this->parseLimit($options['limit']),
                 $this->parseUnion($options['union']),
                 $this->parseLock($options['lock']),
-                $this->parseComment($options['comment']),
+                $this->parseComment($options['common']),
                 $this->parseForce($options['force']),
             ], $this->selectSql);
         return $sql;
@@ -710,7 +710,7 @@ abstract class Builder
                 $this->parseTable($options['table'], $options),
                 implode(' , ', $fields),
                 implode(' , ', $values),
-                $this->parseComment($options['comment']),
+                $this->parseComment($options['common']),
             ], $this->insertSql);
 
         return $sql;
@@ -763,7 +763,7 @@ abstract class Builder
                 $this->parseTable($options['table'], $options),
                 implode(' , ', $fields),
                 implode(' UNION ALL ', $values),
-                $this->parseComment($options['comment']),
+                $this->parseComment($options['common']),
             ], $this->insertAllSql);
 
         return $sql;
@@ -816,7 +816,7 @@ abstract class Builder
                 $this->parseOrder($options['order'], $options),
                 $this->parseLimit($options['limit']),
                 $this->parseLock($options['lock']),
-                $this->parseComment($options['comment']),
+                $this->parseComment($options['common']),
             ], $this->updateSql);
 
         return $sql;
@@ -840,7 +840,7 @@ abstract class Builder
                 $this->parseOrder($options['order'], $options),
                 $this->parseLimit($options['limit']),
                 $this->parseLock($options['lock']),
-                $this->parseComment($options['comment']),
+                $this->parseComment($options['common']),
             ], $this->deleteSql);
 
         return $sql;

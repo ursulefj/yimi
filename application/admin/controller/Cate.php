@@ -60,7 +60,6 @@ class Cate extends Error
             return $this->success('修改成功', url('Cate/topCate'));
         } else {
             return $this->error('修改成功');
-
         }
     }
 
@@ -97,6 +96,12 @@ class Cate extends Error
             'id' => input('id'),
             'name' => input('name'),
         ];
+        $r=CateModel::addCate($data);
+        if ($r) {
+            return $this->success('添加成功', url('Cate/index'));
+        } else {
+            return $this->error('添加失败');
+        }
 
     }
 
@@ -105,22 +110,18 @@ class Cate extends Error
         $id = input('id');
         $data = db('cate')->find($id);
         $this->assign('data', $data);
-        return $this->fetch('');
+        return $this->fetch('editCate');
     }
 
     public function doEdit()
     {
         $data = [
             'id' => input('id'),
-            'catename' => input('catename'),
+            'name' => input('name'),
         ];
-        $validate = validate('Cate');
-        if (!$validate->scene('edit')->check($data)) {
-            return $this->error($validate->getError());
-        }
         $r = db('cate')->update($data);
         if ($r) {
-            return $this->success('修改成功', url('Cate/index'));
+            return $this->success('修改成功', url('Cate/topCate'));
         } else {
             return $this->error('修改成功');
 

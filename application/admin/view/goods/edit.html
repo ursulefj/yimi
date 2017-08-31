@@ -1,0 +1,161 @@
+{:widget('Shop/header')}
+
+	<!-- /头部 -->
+	
+	<div class="main-container container-fluid">
+		<div class="page-container">
+			            <!-- Page Sidebar -->
+            {:widget('Shop/left')}
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="{:url('Index/index')}">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('Goods/index')}">商品管理</a>
+                    </li>
+                                        <li class="active">添加商品</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">新增用户</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal" role="form" enctype="multipart/form-data" action="{:url('Goods/doEdit')}" method="post">
+                        <!--商品编号-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">商品编号</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="goods_id" placeholder="" name="goods_id" required="" value="{$data.goods_id}" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--商品名称-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">商品名称</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="goods_name" placeholder="" name="goods_name" value="{$data.goods_name}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--出售价格-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">出售价格</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="sell_price" placeholder="" name="sell_price" required="" value="{$data.sell_price}" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--市场价格-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">市场价格</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="market_price" placeholder="" name="market_price" required="" value="{$data.market_price}" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--栏目-->
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label no-padding-right">栏目类型</label>
+                            <div class="col-sm-6">
+                                <select name="cate_id" style="width: 100%;">
+                                    <option>未选择</option>
+                                    {foreach $cate as $v}
+                                    <option value="{$data.goods_id}"{if condition="$data.cate_id eq $v.id"} selected="selected"{/if}>{$v.name}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--商家-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">商家</label>
+                            <div class="col-sm-6">
+                                <input class="form-control" id="store" placeholder="" name="store" value="{$data.store}" required="" type="text">
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--上传图片-->
+                        <div class="form-group">
+                            <label for="condition" class="col-sm-2 control-label no-padding-right">上传图片</label>
+                            <div class="col-sm-6">
+                                <input  id="file"  name="file" type="file">
+                                <img src="{$data.image_url}" alt="" style="width: 100px;">
+                            </div>
+                        </div>
+                        <!--描述-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">描述</label>
+                            <div class="col-sm-6">
+                                <textarea name="desc" id="desc" class="form-control">{$data.desc}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--内容-->
+                        <div class="form-group">
+                            <label for="group_id" class="col-sm-2 control-label no-padding-right">内容</label>
+                            <div class="col-sm-6">
+                                <textarea name="content" id="content">{$data.content}</textarea>
+                            </div>
+                            <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
+                        <!--是否冻结-->
+                        <div class="form-group">
+                            <label for="is_show" class="col-sm-2 control-label no-padding-right">是否冻结</label>
+
+                            <div class="col-xs-4">
+                                <label>
+                                    <input class="checkbox-slider slider-icon yesno" name="freze" {if condition="$data.freze eq 1"}checked="checked"{/if} type="checkbox">
+                                    <span class="text"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">保存信息</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+	    <!--Basic Scripts-->
+    <script src="__STATIC__/admin/style/jquery_002.js"></script>
+    <script src="__STATIC__/admin/style/bootstrap.js"></script>
+    <script src="__STATIC__/admin/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__STATIC__/admin/style/beyond.js"></script>
+<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400});
+
+
+</script>
+
+
+</body></html>

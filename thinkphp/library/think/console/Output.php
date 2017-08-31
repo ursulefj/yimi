@@ -33,7 +33,7 @@ use think\console\output\question\Confirmation;
  *
  * @method void info($message)
  * @method void error($message)
- * @method void comment($message)
+ * @method void common($message)
  * @method void warning($message)
  * @method void highlight($message)
  * @method void question($message)
@@ -58,7 +58,7 @@ class Output
     protected $styles = [
         'info',
         'error',
-        'comment',
+        'common',
         'question',
         'highlight',
         'warning'

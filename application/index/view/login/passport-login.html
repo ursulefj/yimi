@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link type="text/css" href="__STATIC__/index/css/header-footer.css" rel="stylesheet">
+    <link type="text/css" href="__STATIC__/index/css/passport-login.css" rel="stylesheet">
+</head>
+<body>
+{:widget('Shop/header')}
+<section>
+    <div class="inner-wrap">
+        <div class="wrap-left">
+            <div class="title"><h2>登录</h2></div>
+            <form  class="wrap-inner" action="{:url('Login/login')}" method="post">
+                <ul>
+                    <li>
+                        <div class="inner-sign" >登录账号</div>
+                        <input class="inner-block" id="username" name="username" type="text" placeholder="用户名/邮箱地址/手机号">
+                    </li>
+                    <li>
+                        <div class="inner-sign" >密码</div>
+                        <input class="inner-block" id="password" name="password" type="text" placeholder="填写密码">
+                    </li>
+                    <li>
+                        <div class="rem">
+                            <input class="rem-check" id="rem" type="checkbox">
+                            <label for="rem">记住密码</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bottom-block">
+                            <button type="submit" class="btn">登录</button>
+                            <a href="">忘记密码</a>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="wrap-right">
+            <div class="right-img"></div>
+            <div class="text-box">我不是会员, <a href="{:url('Register/index')}">要加入。</a></div>
+        </div>
+    </div>
+</section>
+{:widget('Shop/footer')}
+<script src="js/jquery-3.2.1.js"></script>
+<script src="js/js-login.js"></script>
+</body>
+</html>

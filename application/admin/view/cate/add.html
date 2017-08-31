@@ -16,7 +16,7 @@
                         <a href="{:url('Index/index')}">系统</a>
                     </li>
                                         <li>
-                        <a href="{:url('Admin/index')}">子栏目管理</a>
+                        <a href="{:url('Cate/index')}">子栏目管理</a>
                     </li>
                                         <li class="active">添加子栏目</li>
                                         </ul>
@@ -30,16 +30,16 @@
     <div class="col-lg-12 col-sm-12 col-xs-12">
         <div class="widget">
             <div class="widget-header bordered-bottom bordered-blue">
-                <span class="widget-caption">新增用户</span>
+                <span class="widget-caption">新增栏目</span>
             </div>
             <div class="widget-body">
                 <div id="horizontal-form">
-                    <form class="form-horizontal" role="form" action="{:url('Admin/add')}" method="post">
+                    <form class="form-horizontal" role="form" action="{:url('Cate/doAdd')}" method="post">
                         <!--栏目-->
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label no-padding-right">栏目类型</label>
                             <div class="col-sm-6">
-                                <select name="cateid" style="width: 100%;">
+                                <select name="id" style="width: 100%;">
                                     <option>未选择</option>
                                     {foreach $cate.data as $v}
                                     <option value="{$v.id}">{$v.name}</option>

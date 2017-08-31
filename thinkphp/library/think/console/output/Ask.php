@@ -267,7 +267,7 @@ class Ask
                 break;
 
             case $this->question instanceof Confirmation:
-                $text = sprintf(' <info>%s (yes/no)</info> [<comment>%s</comment>]:', $text, $default ? 'yes' : 'no');
+                $text = sprintf(' <info>%s (yes/no)</info> [<common>%s</common>]:', $text, $default ? 'yes' : 'no');
 
                 break;
 
@@ -279,18 +279,18 @@ class Ask
                     $default[$key] = $choices[trim($value)];
                 }
 
-                $text = sprintf(' <info>%s</info> [<comment>%s</comment>]:', $text, implode(', ', $default));
+                $text = sprintf(' <info>%s</info> [<common>%s</common>]:', $text, implode(', ', $default));
 
                 break;
 
             case $this->question instanceof Choice:
                 $choices = $this->question->getChoices();
-                $text    = sprintf(' <info>%s</info> [<comment>%s</comment>]:', $text, $choices[$default]);
+                $text    = sprintf(' <info>%s</info> [<common>%s</common>]:', $text, $choices[$default]);
 
                 break;
 
             default:
-                $text = sprintf(' <info>%s</info> [<comment>%s</comment>]:', $text, $default);
+                $text = sprintf(' <info>%s</info> [<common>%s</common>]:', $text, $default);
         }
 
         $this->output->writeln($text);
@@ -299,7 +299,7 @@ class Ask
             $width = max(array_map('strlen', array_keys($this->question->getChoices())));
 
             foreach ($this->question->getChoices() as $key => $value) {
-                $this->output->writeln(sprintf("  [<comment>%-${width}s</comment>] %s", $key, $value));
+                $this->output->writeln(sprintf("  [<common>%-${width}s</common>] %s", $key, $value));
             }
         }
 

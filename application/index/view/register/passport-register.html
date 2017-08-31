@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link type="text/css" href="__STATIC__/index/css/header-footer.css" rel="stylesheet">
+    <link type="text/css" href="__STATIC__/index/css/passport-register.css" rel="stylesheet">
+</head>
+<body>
+{:widget('Shop/header')}
+<section>
+    <div class="inner-wrap">
+        <div class="wrap-left">
+            <div class="title"><h2>会员注册</h2></div>
+            <form action="{:url('Register/add')}" class="wrap-inner" method="post">
+                <ul>
+                    <li>
+                        <div class="inner-sign" >
+                            <label class="inner-title">手机号</label>
+                            <input class="inner-block" name="mobile" type="text" placeholder="请填写正确手机号">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inner-sign pw" >
+                            <label class="inner-title">密码</label>
+                            <input class="inner-block" name="r_password" type="text" placeholder="6-20个字符">
+                            <span class="pw-inten">密码强度</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inner-sign" >
+                            <label class="inner-title">校验码</label>
+                            <input class="inner-block-code" type="text" placeholder="填写校验码">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="inner-sign" >
+                            <label class="inner-title">验证码</label>
+                            <input class="inner-block-code" type="text" placeholder="填写验证码">
+                            <button class="btn-code">获取短信验证码</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="consent">
+                            <input class="consent-check" id="consent" type="checkbox">
+                            <label for="consent">我已阅读并同意 <a href="">会员注册协议</a> 和 <a href="">隐私保护政策</a>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="bottom-block">
+                            <button type="submit" class="btn">注册</button>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="wrap-right">
+            <div class="right-img"></div>
+        </div>
+    </div>
+</section>
+{:widget('Shop/footer')}
+</body>
+</html>
